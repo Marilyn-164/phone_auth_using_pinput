@@ -13,20 +13,25 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Login Page'),
+        title: Text('OTP Verification'),
       ),
+      
       body: Padding(
+        
         padding: EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
+            Image.asset('assets/4.png'), 
+            
             Text(
-              ' Phone Authentication\nUsing OTP Verification',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              ' Enter your mobile number we will send an OTP',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(height: 40.0),
-            Text('Format: [subscriber number]'),
+           // Text('Format: [subscriber number]'),
             SizedBox(height: 40.0),
+            
             TextField(
               cursorColor: Colors.black,
               style: TextStyle(fontSize: 18.0, color: Colors.black),
@@ -45,10 +50,11 @@ class _LoginPageState extends State<LoginPage> {
                 prefixIcon: Icon(Icons.phone),
                 prefix: Padding(
                   padding: EdgeInsets.all(4),
-                  child: Text('+92'),
+                  child: Text('+91'),
                 ),
               ),
             ),
+            
             SizedBox(height: 20.0),
             RaisedButton(
               onPressed: () {
@@ -57,8 +63,8 @@ class _LoginPageState extends State<LoginPage> {
                       builder: (context) => OtpPage(_controller.text)),
                 );
               },
-              color: Colors.orangeAccent,
-              child: Text('Verify', style: TextStyle(fontSize: 17.0)),
+              color: Colors.orange[800],
+              child: Text('Send OTP', style: TextStyle(fontSize: 17.0)),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
             ),

@@ -29,7 +29,7 @@ class _OtpPageState extends State<OtpPage> {
       key: _scaffoldKey,
       appBar: AppBar(
         centerTitle: true,
-        title: Text('OTP Verification Page'),
+        title: Text('Enter Verification code'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -37,17 +37,18 @@ class _OtpPageState extends State<OtpPage> {
           Container(
             child: Center(
               child: Text(
-                'Verify +92-${widget.phone}',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                'Enter OTP sent to your mobile number',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(30.0),
+            
             child: PinPut(
-              fieldsCount: 6,
+              fieldsCount: 4,
               textStyle: const TextStyle(fontSize: 25.0, color: Colors.white),
-              eachFieldWidth: 40.0,
+              eachFieldWidth: 55.0,
               eachFieldHeight: 55.0,
               focusNode: _pinPutFocusNode,
               controller: _pinPutController,
@@ -82,6 +83,7 @@ class _OtpPageState extends State<OtpPage> {
       ),
     );
   }
+  
 
   _verifyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
