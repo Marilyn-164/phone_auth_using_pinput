@@ -22,55 +22,57 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('assets/4.png'), 
-            
-            Text(
-              ' Enter your mobile number we will send an OTP',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            SizedBox(height: 40.0),
-           // Text('Format: [subscriber number]'),
-            SizedBox(height: 40.0),
-            
-            TextField(
-              cursorColor: Colors.black,
-              style: TextStyle(fontSize: 18.0, color: Colors.black),
-              maxLength: 10,
-              keyboardType: TextInputType.number,
-              controller: _controller,
-              decoration: InputDecoration(
-                fillColor: Colors.orange.withOpacity(0.1),
-                filled: true,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                labelText: 'Phone Number',
-                labelStyle: TextStyle(
-                  fontSize: 16.0,
-                ),
-                prefixIcon: Icon(Icons.phone),
-                prefix: Padding(
-                  padding: EdgeInsets.all(4),
-                  child: Text('+91'),
-                ),
-              ),
-            ),
-            
-            SizedBox(height: 20.0),
-            RaisedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                      builder: (context) => OtpPage(_controller.text)),
+            buildImage('assets/images/4.png'), 
+                        
+                        Text(
+                          ' Enter your mobile number we will send an OTP',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
+                        SizedBox(height: 40.0),
+                       // Text('Format: [subscriber number]'),
+                        SizedBox(height: 40.0),
+                        
+                        TextField(
+                          cursorColor: Colors.black,
+                          style: TextStyle(fontSize: 18.0, color: Colors.black),
+                          maxLength: 10,
+                          keyboardType: TextInputType.number,
+                          controller: _controller,
+                          decoration: InputDecoration(
+                            fillColor: Colors.orange.withOpacity(0.1),
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                            labelText: 'Phone Number',
+                            labelStyle: TextStyle(
+                              fontSize: 16.0,
+                            ),
+                            prefixIcon: Icon(Icons.phone),
+                            prefix: Padding(
+                              padding: EdgeInsets.all(4),
+                              child: Text('+91'),
+                            ),
+                          ),
+                        ),
+                        
+                        SizedBox(height: 20.0),
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => OtpPage(_controller.text)),
+                            );
+                          },
+                          color: Colors.orange[800],
+                          child: Text('Send OTP', style: TextStyle(fontSize: 17.0)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
-              },
-              color: Colors.orange[800],
-              child: Text('Send OTP', style: TextStyle(fontSize: 17.0)),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+              }
+            
+              buildImage(String s) {}
 }
