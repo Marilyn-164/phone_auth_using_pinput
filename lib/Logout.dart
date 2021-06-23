@@ -25,7 +25,7 @@ class _LogoutPageState extends State<LogoutPage> {
         title: Text('Logout Page'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: Icon(Icons.logout), 
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
               Navigator.pushAndRemoveUntil(

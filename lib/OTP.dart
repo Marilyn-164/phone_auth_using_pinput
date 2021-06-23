@@ -31,55 +31,60 @@ class _OtpPageState extends State<OtpPage> {
         centerTitle: true,
         title: Text('Enter Verification code'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Center(
-              child: Text(
-                'Enter OTP sent to your mobile number',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/5.png"),
+            Container(
+              padding: EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  'Enter OTP sent to your mobile number',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(30.0),
-            
-            child: PinPut(
-              fieldsCount: 4,
-              textStyle: const TextStyle(fontSize: 25.0, color: Colors.white),
-              eachFieldWidth: 55.0,
-              eachFieldHeight: 55.0,
-              focusNode: _pinPutFocusNode,
-              controller: _pinPutController,
-              submittedFieldDecoration: pinPutDecoration,
-              selectedFieldDecoration: pinPutDecoration,
-              followingFieldDecoration: pinPutDecoration,
-              pinAnimationType: PinAnimationType.fade,
-              onSubmit: (pin) async {
-                try {
-                  await FirebaseAuth.instance
-                      .signInWithCredential(
-                    PhoneAuthProvider.credential(
-                        verificationId: _verificationID, smsCode: pin),
-                  )
-                      .then((value) async {
-                    if (value.user != null) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(builder: (context) => LogoutPage()),
-                          (route) => false);
-                    }
-                  });
-                } catch (e) {
-                  FocusScope.of(context).unfocus();
-                  _scaffoldKey.currentState
-                      .showSnackBar(SnackBar(content: Text('Invalid OTP')));
-                }
-              },
-            ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              
+              child: PinPut(
+                fieldsCount: 1,
+                textStyle: const TextStyle(fontSize: 25.0, color: Colors.white),
+                eachFieldWidth: 200.0,
+                eachFieldHeight: 55.0,
+                focusNode: _pinPutFocusNode,
+                controller: _pinPutController,
+                submittedFieldDecoration: pinPutDecoration,
+                selectedFieldDecoration: pinPutDecoration,
+                followingFieldDecoration: pinPutDecoration,
+                pinAnimationType: PinAnimationType.fade,
+                onSubmit: (pin) async {
+                  try {
+                    await FirebaseAuth.instance
+                        .signInWithCredential(
+                      PhoneAuthProvider.credential(
+                          verificationId: _verificationID, smsCode: pin),
+                    )
+                        .then((value) async {
+                      if (value.user != null) {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => LogoutPage()),
+                            (route) => false);
+                      }
+                    });
+                  } catch (e) {
+                    FocusScope.of(context).unfocus();
+                    _scaffoldKey.currentState
+                        .showSnackBar(SnackBar(content: Text('Invalid OTP')));
+                  }
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
